@@ -1,7 +1,8 @@
 const AppTitle = "Lépésszámláló App"
 const Author = "13.a Szoftverfejlesztő"
 const Company = "Bajai SZC Türr István Technikum"
- 
+const Server = "http://localhost:3000"
+
 let title = document.querySelector('#title')
 let author = document.querySelector('#author')
 let company = document.querySelector('#company')
@@ -11,10 +12,15 @@ let darkmodeBtn = document.querySelector('#darkmodeBtn')
 let main = document.querySelector('main');
  
 let theme = 'dark'
- 
+
+let mainMenu = document.querySelector('#mainMenu')
+let userMenu = document.querySelector('#userMenu')
+
+let loggedUser= null
 title.innerHTML = AppTitle
 company.innerHTML = Company
 Author.innerHTML = Author
+
  
 lightmodeBtn.addEventListener('click', () => {
     setTheme('light')
@@ -55,11 +61,29 @@ function setTheme(theme) {
     document.documentElement.setAttribute('data-bs-theme', theme)
  
 }
+
+
+
+
 async function render(view){
     main.innerHTML = await(await fetch(`views/${view}.html`)).text();
  }
  
+async function getLoggedUser() {
+    if (sessionStorage.getItem('loggedUser')) {
+        loggedUser = JSON.parse(sessionStorage.getItem('loggedUser'))
+        mainMenu.classList.add('hide')
+        userMenu.classList.remove('hide')
+        await render('main')
+    }else{
+        loggedUser=null
+        mainMenu.classList.remove('hide')
+        userMenu.classList.add('hide')
+        await render('login')
+    }
+}
+
+
 loadTheme()
+getLoggedUser()
 saveTheme()
-render('login')
-render('registration')
