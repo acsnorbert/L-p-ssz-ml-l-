@@ -15,24 +15,28 @@
             <input type="email" class="form-control" id="emailField" placeholder="">
             <label for="emailField">Email cím</label>
         </div>
-        <button class="btn btn-primary" onclick="UpdateProfile()" id="updateProfileBtn">Adatok módosítása</button>
+        <div class="form-floating mb-3">
+            <button class="btn btn-primary" onclick="UpdateProfile()" id="updateProfileBtn">Adatok módosítása</button>
+        </div>
+        
     </div>
     
 
     <div class="col-12 col-lg-6">
         <h5>Jelszó módosítás</h5>
-        <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="NewPassField" placeholder="">
-            <label for="NewPassField">Új jelszó</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="CNewPassField" placeholder="">
-            <label for="CNewPassField"> Új jelszó megerősítése</label>
-        </div>
-        <div class="form-floating mb-3">
+        <div class="form-floating mb-6 mb-3">
             <input type="password" class="form-control" id="oldPassField" placeholder="">
             <label for="oldPassField">Jelenlegi jelszó</label>
         </div>
+        <div class="form-floating mb-6 mb-3">
+            <input type="password" class="form-control" id="NewPassField" placeholder="">
+            <label for="NewPassField">Új jelszó</label>
+        </div>
+        <div class="form-floating mb-6 mb-3">
+            <input type="password" class="form-control" id="CNewPassField" placeholder="">
+            <label for="CNewPassField"> Új jelszó megerősítése</label>
+        </div>
+        
         <button class="btn btn-primary" onclick="ChangePass()" id="changePassBtn">Jelszó módosítása</button>
     </div>
 </div>
