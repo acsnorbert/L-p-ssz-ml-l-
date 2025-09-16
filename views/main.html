@@ -1,42 +1,48 @@
-<div class="col-12">
-<h3>Lépésadatok kezelése!</h3>
-<div class="alert hide" id="alertReg" role="alert">
+<h3>Lépésadatok kezelése</h3>
+<hr>
+
+<div id="messageBox"></div>
+
+<!-- űrlap -->
+<div class="row">
+    <div class="mb-3 col-12 col-lg-4">
+        <label for="dateField" class="form-label">Dátum</label>
+        <input type="date" class="form-control" id="dateField">
+    </div>
+    
+    <div class="mb-3 col-12 col-lg-4">
+        <label for="stepCountField" class="form-label">Lépésszám</label>
+        <input type="number" class="form-control" min="0" id="stepCountField">
+    </div>
+    
+    <div class="mb-3 col-12 col-lg-4">
+        <button class="btn btn-primary mb-3" id="addBtn" onclick="add()">Hozzáadás</button>
+        <button class="btn btn-warning mb-3 hide" id="updateBtn" onclick="">Módosítás</button>
+        <button class="btn btn-danger mb-3 hide" id="delBtn" onclick="">Törlés</button>
+        <button class="btn btn-secondary mb-3 hide" id="cancelBtn" onclick="cancel()">Mégsem</button>
+
+    </div>
 
 </div>
-<div class="form-floating mb-3 col-12 col-lg-4">
-    <input type="date" class="form-control" id="dateField" placeholder="">
-    <label for="dateField">Dátum</label>
-</div>
-<div class="form-floating mb-3 col-12 col-lg-4">
-    <input type="number" class="form-control" id="stepcountField" placeholder="">
-    <label for="stepcountField">Lépésszám</label>
-</div>
-<div class="form-floating mb-3 col-12 col-lg-4">
-    <button class="btn btn-primary " id="addBtn" onclick="add()">Hozzáadás</button>
-    <button class="btn btn-warning hide" id="updateBtn" onclick="update()">Módosítás</button>
-    <button class="btn btn-danger hide" id="delBtn" onclick="del()">Törlés</button>
-    <button class="btn btn-secondary hide" id="delBtn" onclick="cancel()">Mégsem</button>
-</div>
+<!-- táblázat -->
 
-
-
-<table class="table">
+<table class="table table-hover table-striped">
     <thead>
         <tr>
             <th class="text-center">#</th>
             <th class="text-start">Dátum</th>
             <th class="text-end">Lépésszám</th>
             <th class="text-end">Műveletek</th>
-
         </tr>
     </thead>
     <tbody>
-        <!-- ide jönnek az adatok-->
+        <!-- Lépés adatok dinamikusan kitöltve -->
     </tbody>
     <tfoot>
         <tr>
-            <td>Összesen: <span>0</span>lépés</td>
+            <td colspan="4" class="text-center">
+                Összesen: <strong><span id="stepSumSpan" class="text-info">0</span></strong> lépés.
+            </td>
         </tr>
     </tfoot>
 </table>
-</div>

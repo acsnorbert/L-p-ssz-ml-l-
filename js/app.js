@@ -1,85 +1,97 @@
-let theme = 'light';
-let loggedUser = null
+const AppTitle = 'Lépésszámláló App';
+const Author = '13. A';
+const Company = 'Bajai SZC Türr Istvàn Technikum'
+const ServerUrl = 'http://localhost:3000'
+
+
+let title = document.getElementById('appTitle');
+let company = document.getElementById('company');
+let author = document.getElementById('author');
+let lightmodeBtn = document.getElementById('lightmodeBtn');
+let darkmodeBtn = document.getElementById('darkmodeBtn');
+
 let main = document.querySelector('main');
 
-const AppTitle = "Lépésszámláló App"
-const Author = "13.A Szoftverfejlesztő"
-const Company = "Bajai SZC Türr István Technikum"
+let mainMenu = document.getElementById('mainMenu');
+let userMenu = document.getElementById('userMenu');
 
-let Apptitle = document.getElementById("Title")
-let author = document.getElementById("Author")
-let company = document.getElementById("Company")
+let theme = 'light';
 
-let loggedInMenu = document.getElementById("loggedInMenu")
-let loggedOutMenu = document.getElementById("loggedOutMenu")
+title.innerHTML = AppTitle;
+company.innerHTML = Company;
+author.innerHTML = Author;
 
-Apptitle.innerHTML = AppTitle
-author.innerHTML = Author
-company.innerHTML = Company
+let loggedUser = null;
 
-let lightmodeBtn = document.getElementById("lightmodeBtn")
-let darkmodeBtn = document.getElementById("darkmodeBtn")
+lightmodeBtn.addEventListener('click', () => {
+    setTheme('light');
+});
 
-lightmodeBtn.addEventListener('click', ()=>{
-    setTheme('light')
-    saveTheme('light')
-})
+darkmodeBtn.addEventListener('click', () => {
+    setTheme('dark');
+});
 
-darkmodeBtn.addEventListener('click', ()=>{
-    setTheme('dark')
-    saveTheme('dark')
-})
-
-function loadTheme(){
-    theme = 'light'
-    if(localStorage.getItem('SCTheme')){
+let loadTheme = () => {
+    theme = 'dark';
+    if (localStorage.getItem('SCTheme')) {
         theme = localStorage.getItem('SCTheme');
-        
     }
-    setTheme(theme)
+    setTheme(theme);
 }
 
-function saveTheme(theme){
+let saveTheme = (theme) => {
     localStorage.setItem('SCTheme', theme)
 }
 
-function setTheme(theme){
-    document.documentElement.setAttribute('data-bs-theme', theme)
-    setThemeBtn(theme)
+let setTheme = (theme) => {
+    document.documentElement.setAttribute('data-bs-theme', theme);
+    setThemeBtn(theme);
+    saveTheme(theme);
 }
 
-function setThemeBtn(theme){
-    if(theme == 'light'){
-        lightmodeBtn.classList.add('hide')
-        darkmodeBtn.classList.remove('hide')
-    }
-    else{
-        darkmodeBtn.classList.add('hide')
-        lightmodeBtn.classList.remove('hide')
-        
+setThemeBtn = (theme) => {
+    if (theme == 'light') {
+        lightmodeBtn.classList.add('hide');
+        darkmodeBtn.classList.remove('hide');
+    } else {
+        lightmodeBtn.classList.remove('hide');
+        darkmodeBtn.classList.add('hide');
     }
 }
 
-async function render(view){
- main.innerHTML =await (await fetch(`views/${view}.html`)).text()
- setDate()
+let render = async (view) => {
+    main.innerHTML = await (await fetch(`views/${view}.html`)).text();
+
+    switch (view) {
+        case "profile":
+            getProfile();
+            break;
+        case "main":
+            setDate();
+            await getSteps();
+            renderSteps();
+            break;
+            case "statistics":
+                await getChartData()
+                initChart()
+                break
+    }
 }
 
-async function getLoggedUser(){
-    if(sessionStorage.getItem('loggedUser')){
-        loggedUser = JSON.parse(sessionStorage.getItem('loggedUser'))
-        loggedInMenu.classList.remove("hide")
-        loggedOutMenu.classList.add("hide")
-        await render('main')
+async function getLoggedUser() {
+    if (sessionStorage.getItem('loggedUser')) {
+        loggedUser = JSON.parse(sessionStorage.getItem('loggedUser'));
+        mainMenu.classList.add('hide');
+        userMenu.classList.remove('hide');
+        await render('main');
+    } else {
+        loggedUser = null;
+        mainMenu.classList.remove('hide');
+        userMenu.classList.add('hide');
+        await render('login');
     }
-    else{
-        loggedUser = null
-        loggedOutMenu.classList.remove("hide")
-        loggedInMenu.classList.add("hide")
-        await render('login')
-    }
-    return loggedUser
+    return loggedUser;
 }
 
-loadTheme()
-getLoggedUser()
+loadTheme();
+getLoggedUser();

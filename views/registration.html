@@ -1,27 +1,31 @@
-
-<div class="col-12 col-lg-6 offset-lg-3">
 <h3>Regisztráció</h3>
 <hr>
-<div class="alert hide" id="alertReg" role="alert">
-    
+
+<div id="messageBox">
+    <!-- Dinamikusan fel lesz töltve -->
 </div>
 
-<div class="form-floating mb-3">
-    <input type="text" class="form-control" id="nameField" placeholder="">
-    <label for="nameField">Név</label>
-</div>
-<div class="form-floating mb-3">
-    <input type="email" class="form-control" id="emailField" placeholder="">
-    <label for="emailField">Email cím</label>
-</div>
-<div class="form-floating mb-3">
-    <input type="password" class="form-control" id="passField" placeholder="">
-    <label for="passField">Jelszó</label>
-</div>
-<div class="form-floating mb-3">
-    <input type="password" class="form-control" id="confirmpassField" placeholder="">
-    <label for="confirmpassField">Jelszó megerősítése</label>
-</div>
+<form>
+    <div class="mb-3">
+        <label for="nameField" class="form-label">Név</label>
+        <input type="text" class="form-control" id="nameField">
+    </div>
 
-<button class="btn btn-primary" onclick="Registration()" id="registerBtn">Regisztráció</button>
-</div>
+    <div class="mb-3">
+        <label for="emailField" class="form-label">Email cím</label>
+        <input type="email" class="form-control" id="emailField">
+    </div>
+
+    <div class="mb-3">
+        <label for="passwordField" class="form-label">Jelszó</label>
+        <input type="password" class="form-control" id="passwordField">
+    </div>
+    <div class="mb-3">
+        <label for="confirmPasswordField" class="form-label">Jelszó megerősítése</label>
+        <input type="password" class="form-control" id="confirmPasswordField">
+    </div>
+
+    <button class="btn btn-primary" id="regBtn" onclick="registration()">Regisztráció</button>
+</form>
+
+<!-- <script src="../controllers/userCtrl.js"></script> -->
