@@ -1,44 +1,39 @@
-<h3>Profil kezelése</h3>
-<hr>
-<div id="messageBox"></div>
+<div class="col-12 col-lg-6 offset-lg-3">
+    <h3>Profilom kezelése</h3>
+    <hr>
+    <div class="alert hide" id="alertReg" role="alert">
 
-<div class="row">
-    <div class="col-12 col-l-6">
-        <h5>Alapadatok</h5>
-
-        <div class="mb-3">
-            <label for="nameField" class="form-label">Név</label>
-            <input type="text" class="form-control" id="nameField">
-        </div>
-
-        <div class="mb-3">
-            <label for="emailField" class="form-label">Email cím</label>
-            <input type="email" class="form-control" id="emailField">
-        </div>
-
-        <button class="btn btn-primary" id="modifyBtn" onclick="updateProfile()">Módosítás</button>
     </div>
-
-    <div class="col-12 col-l-6">
-        <h5>Jelszó módosítás</h5>
-
-        <div class="mb-3">
-            <label for="passwordField" class="form-label">Jelenlegi jelszó</label>
-            <input type="password" class="form-control" id="passwordField">
+    <div class="row"></div>
+        <div class="col-12 col-lg-6">
+            <h5>Alapadatok</h5>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="nameField" placeholder="">
+                <label for="nameField">Név</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="emailField" placeholder="">
+                <label for="emailField">Email cím</label>
+            </div>
+            <button class="btn btn-primary" onclick="UpdateProfile()" id="updateProfileBtn">Adatok módosítása</button>
         </div>
 
-        <div class="mb-3">
-            <label for="passwordField" class="form-label">Új jelszó</label>
-            <input type="password" class="form-control" id="newPasswordField">
-        </div>
 
-        <div class="mb-3">
-            <label for="passwordField" class="form-label">Új jelszó megerősítése</label>
-            <input type="password" class="form-control" id="newPasswordConfirmField">
+        <div class="col-12 col-lg-6">
+            <h5>Jelszó módosítás</h5>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="oldPassField" placeholder="">
+                <label for="oldPassField">Jelenlegi jelszó</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="NewPassField" placeholder="">
+                <label for="NewPassField">Új jelszó</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="CNewPassField" placeholder="">
+                <label for="CNewPassField"> Új jelszó megerősítése</label>
+            </div>
+            <button class="btn btn-primary" onclick="ChangePass()" id="changePassBtn">Jelszó módosítása</button>
         </div>
-
-        <button class="btn btn-primary" id="modifyPassBtn" onclick="updatePassword()">Módosítás</button>
     </div>
-
-        <button class="btn btn-primary" id="getprofileBtn" onclick="getProfile()">Getprofile</button>
 </div>

@@ -1,17 +1,20 @@
-<h3>Belépés</h3>
-<hr>
-
-<div id="messageBox"></div>
-
-<form>
-    <div class="mb-3">
-        <label for="emailField" class="form-label">Email cím</label>
-        <input type="email" class="form-control" id="emailField">
+<div class="col-12 col-lg-6 offset-lg-3">
+    <h3>Belépés</h3>
+    <hr>
+    
+    
+    <div class="alert hide" id="alertReg" role="alert">
+        
     </div>
-    <div class="mb-3">
-        <label for="passwordField" class="form-label">Jelszó</label>
-        <input type="password" class="form-control" id="passwordField">
+    
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="emailField" placeholder="">
+        <label for="emailField">Email cím</label>
     </div>
-
-    <button class="btn btn-primary" id="loginBtn" onclick="login()">Belépés</button>
-</form>
+    <div class="form-floating mb-3">
+        <input type="password" class="form-control" id="passField" placeholder="">
+        <label for="passField">Jelszó</label>
+    </div>
+    
+    <button class="btn btn-primary" onclick="Login()" id="loginBtn">Belépés</button>
+    </div>

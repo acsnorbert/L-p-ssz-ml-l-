@@ -1,0 +1,42 @@
+<h3>Lépésadatok kezelése</h3>
+<div class="alert hide" id="alertReg" role="alert">
+    
+</div>
+<!--Űrlap-->
+<div class="row">
+    <div class="form-floating mb-3 col-12 col-lg-4">
+        <input type="date" class="form-control" id="dateField" max="" placeholder="">
+        <label for="dateField">Dátum</label>
+    </div><div class="form-floating mb-3 col-12 col-lg-4">
+        <input type="number" class="form-control" min="0" id="stepcountField" placeholder="">
+        <label for="stepcountField">Lépésszám</label>
+    </div>
+    <div class="col-12 col-lg-4">
+    <button class="btn btn-primary" onclick="Add()" id="addBtn">Hozzáadás</button>
+    <button class="btn btn-primary hide" onclick="Update()" id="updBtn">Módosítás</button>
+    <button class="btn btn-primary hide" onclick="Del()" id="delBtn">Törlés</button>
+    <button class="btn btn-primary hide" onclick="Cancel()" id="cancelBtn">Mégsem</button>
+    </div>
+</div>
+
+<hr>
+<!--Táblázat-->
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="text-center">#</th>
+            <th class="text-start">Dátum</th>
+            <th class="text-end">Lépésszám</th>
+            <th class="text-end">Műveletek</th>
+        </tr>
+    </thead>
+    <tbody id="tbody">
+        <!--Ide jönnek az adatok dinamikusan-->
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4" class="text-center">Összesen: <span class="bold" id="allsteps">0</span> lépés</td>
+        </tr>
+    </tfoot>
+</table>
